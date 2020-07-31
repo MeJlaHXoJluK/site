@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DataBase</title>
+<meta charset = "utf-8">
+<meta name = "viewport" content = "width=device-width">
+</head>
+<script>
+	function clickSendButton(name){
+		var btn = document.getElementById(name);
+		btn.click();
+	}
+	function sendData(){
+		location.href = "index.html?=120&223&3.14&2.72";
+	}
+</script>
+<body onload = "clickSendButton('autoClick')">
+	
+<form>
+<input type = "button" onclick = "sendData()" id = "autoClick">
+</form>
+
+</body>
+
+</html>

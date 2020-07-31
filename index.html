@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ms</title>
+<meta charset = "utf-8">
+<meta name = "viewport" content = "width=device-width">
+<link rel = "stylesheet" type = "text/css" href = "style/index.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ruslan+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@300&display=swap" rel="stylesheet">
+<script>
+	function getData(){
+		location.href = "data.html";	
+	}
+	
+	window.onload = function(){
+		var pos = document.location.href.indexOf("?");
+		if(pos !== -1){
+			var str = document.location.href.slice(pos + 2);
+			priceArr = str.split("&");
+		}else getData();
+	}
+</script>
+</head>
+
+<body>
+	
+	<div class = "wrapper">
+		<div class = "content">
+			<form class = "MenuOrder" action = "#" method = "get">
+				<div class = "el">
+					<label class = "lbls" for = "S1">Лекарство:</label>
+					<select class = "SelectMenu" id = "S1">
+						<option disabled selected>Выбери товар</option>
+						<optgroup label = "Яды">
+							<option>Ботулотоксин</option>
+							<option>Рицин</option>
+						</optgroup>
+						<optgroup label = "Противоядия">
+							<option>От ботулотоксина антидота нет</option>
+							<option>Либо антидота нет, либо он неизвестен</option>
+						</optgroup>
+					</select>
+				</div>
+				
+				<div class = "el" >
+					<label class = "lbls" for = "q1">Количество: </label>
+					<input type = "text" name = "quantity" id = "q1">
+				</div>	
+				
+				<div class = "bt">
+					<input type = "button" name = "AddToBasket" value = "Добавить в корзину" onclick = "createTable()" id = "btId">
+				</div>	
+			</form>
+			
+			<div class = "hrContainer"><hr class = "hrS"></div>
+			
+			<div id = "Order">
+			<!--Здесь создается таблица с заказом-->
+			</div>
+		</div>
+	</div>
+
+
+<script  src = "js/script.js" defer></script>
+<script>
+function setFoc(el){
+		el.childNodes[3].focus();
+	}
+
+function changeFoc(el){	
+	}
+	
+	function setFuncClass(){
+		var elements = document.getElementsByClassName("el");
+		for(var i = 0; i < elements.length; i++){
+			elements[i].setAttribute("onclick", "setFoc(this)");
+			elements[i].childNodes[3].setAttribute("onblur", "changeFoc(this)");
+		}
+	}
+document.addEventListener("DOMContentLoaded", setFuncClass());
+</script>
+</body>
+
+</html>
